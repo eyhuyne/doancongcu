@@ -48,6 +48,27 @@
           <div class="module-header">
             <form id="sidebar" >
               <div class="the-loai">
+              <div class="vi-tri">
+                <table class="location ">
+                  <tr>
+                      <th colspan="2" for="city ">ĐỊA ĐIỂM ,VỊ TRÍ</th>
+                  </tr>  
+                  <tr class="last-row">  
+                    <td> 
+                      <select name="calc_shipping_provinces" >
+                        <option value="">Chọn thành phố</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select name="calc_shipping_district" >
+                        <option value="">Chọn quận huyện</option>
+                      </select>
+                    </td>
+                    <input class="billing_address_1" name="" type="hidden" value="">
+                    <input class="billing_address_2" name="" type="hidden" value="">
+                  </tr>
+              </table>
+              </div>
                 <table class="type ">
                   <tr>
                       <th colspan="2" >TÌM KIẾM THEO LOẠI HÌNH</th>
@@ -96,7 +117,150 @@
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
           <script src="https://web8802.com/wp-content/themes/hienads/assets/js/quanhuyen.js"></script>
       
+          <script>
+            if (address_2 = localStorage.getItem('address_2_saved')) {
 
+              $('select[name="calc_shipping_district"] option').each(function() {
+
+                if ($(this).text() == address_2) {
+
+                  $(this).attr('selected', '')
+
+                }
+
+              })
+
+              $('input.billing_address_2').attr('value', address_2)
+
+            }
+
+            if (district = localStorage.getItem('district')) {
+
+              $('select[name="calc_shipping_district"]').html(district)
+
+              $('select[name="calc_shipping_district"]').on('change', function() {
+
+                var target = $(this).children('option:selected')
+
+                target.attr('selected', '')
+
+                $('select[name="calc_shipping_district"] option').not(target).removeAttr('selected')
+
+                address_2 = target.text()
+
+                $('input.billing_address_2').attr('value', address_2)
+
+                district = $('select[name="calc_shipping_district"]').html()
+
+                localStorage.setItem('district', district)
+
+                localStorage.setItem('address_2_saved', address_2)
+
+              })
+
+            }
+
+            $('select[name="calc_shipping_provinces"]').each(function() {
+
+              var $this = $(this),
+
+                stc = ''
+
+              c.forEach(function(i, e) {
+
+                e += +1
+
+                stc += '<option value=' + e + '>' + i + '</option>'
+
+                $this.html('<option value="">Tỉnh / Thành phố</option>' + stc)
+
+                if (address_1 = localStorage.getItem('address_1_saved')) {
+
+                  $('select[name="calc_shipping_provinces"] option').each(function() {
+
+                    if ($(this).text() == address_1) {
+
+                      $(this).attr('selected', '')
+
+                    }
+
+                  })
+
+                  $('input.billing_address_1').attr('value', address_1)
+
+                }
+
+                $this.on('change', function(i) {
+
+                  i = $this.children('option:selected').index() - 1
+
+                  var str = '',
+
+                    r = $this.val()
+
+                  if (r != '') {
+
+                    arr[i].forEach(function(el) {
+
+                      str += '<option value="' + el + '">' + el + '</option>'
+
+                      $('select[name="calc_shipping_district"]').html('<option value="">Quận / Huyện</option>' + str)
+
+                    })
+
+                    var address_1 = $this.children('option:selected').text()
+
+                    var district = $('select[name="calc_shipping_district"]').html()
+
+                    localStorage.setItem('address_1_saved', address_1)
+
+                    localStorage.setItem('district', district)
+
+                    $('select[name="calc_shipping_district"]').on('change', function() {
+
+                      var target = $(this).children('option:selected')
+
+                      target.attr('selected', '')
+
+                      $('select[name="calc_shipping_district"] option').not(target).removeAttr('selected')
+
+                      var address_2 = target.text()
+
+                      $('input.billing_address_2').attr('value', address_2)
+
+                      district = $('select[name="calc_shipping_district"]').html()
+
+                      localStorage.setItem('district', district)
+
+                      localStorage.setItem('address_2_saved', address_2)
+
+                    })
+
+                  } else {
+
+                    $('select[name="calc_shipping_district"]').html('<option value="">Quận / Huyện</option>')
+
+                    district = $('select[name="calc_shipping_district"]').html()
+
+                    localStorage.setItem('district', district)
+
+                    localStorage.removeItem('address_1_saved', address_1)
+
+                  }
+
+                })
+
+              })
+
+            })
+            var listcity=['An Giang','Bà rịa - Vũng tàu','Bạc Liêu','Bắc Kạn','Bắc Giang','Bắc Ninh','Bến Tre','Bình Dương',
+                          'Bình Định','Bình Phước','Bình Thuận','Cà Mau','Cao Bằng','Cần Thơ', 'Đà Nẵng','Đắk Lắk','Đắk Nông',
+                          'Đồng Nai','Đồng Tháp','Điện Biên','Gia Lai','Hà Giang','Hà Nam','Hà Nội','Hà Tĩnh','Hải Dương','Hải Phòng',
+                          'Hậu Giang','Hòa Bình','Hưng Yên','TP. Hồ Chí Minh','Khánh Hòa','Kiên Giang','Kon Tum','Lai Châu','Lâm Đồng','Lạng Sơn','Lào Cai',
+                          'Long An','Nam Định','Nghệ An','Ninh Bình','Ninh Thuận','Phú Thọ','Phú Yên','Quảng Bình','Quảng Nam','Quảng Ngãi',
+                          'Quảng Ninh','Quảng Trị','Sóc Trăng','Sơn La','Tây Ninh','Thái Bình','Thái Nguyên','Thanh Hóa','Thừa Thiên Huế','Tiền Giang',
+                          'Trà Vinh','Tuyên Quang','Vĩnh Long','Vĩnh Phúc','Yên Bái'];
+            </script>
             <script>
               document.getElementById("sidebar").addEventListener("submit", function(event) {
                 event.preventDefault(); // Ngăn chặn hành vi mặc định của form (tải lại trang)
