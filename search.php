@@ -108,7 +108,94 @@
                   </tr>
               </table>
               </div>
-    
+              <div class="gia-tien">
+                <table class="Price ">
+                <tr>
+                  <th>TÌM KIẾM THEO GIÁ</th>
+                </tr>
+                <tr>
+                  <td>
+                    <label>
+                      <input type="radio" name="price" value="all" <?php if (isset($_GET['price'])) if ($_GET['price'] == 'all') echo 'checked' ?>>
+                      <span class="checkmark"></span>
+                      Tất cả
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>
+                      
+                      <input type="radio" name="price" value="0" <?php if (isset($_GET['price'])) if ($_GET['price'] == 0) echo 'checked' ?>>
+                      <span class="checkmark"></span>
+                      Dưới 1 triệu
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>
+                      <input type="radio" name="price" value="1" <?php if (isset($_GET['price'])) if ($_GET['price'] == 1) echo 'checked' ?>>
+                      <span class="checkmark"></span>
+                      1 triệu - 2 triệu
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>
+                      <input type="radio" name="price" value="2" <?php if (isset($_GET['price'])) if ($_GET['price'] == 2) echo 'checked' ?>>
+                      <span class="checkmark"></span>
+                      2 triệu - 3 triệu
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>
+                      <input type="radio" name="price" value="3" <?php if (isset($_GET['price'])) if ($_GET['price'] == 3) echo 'checked' ?>>
+                      <span class="checkmark"></span>
+                      3 triệu - 5 triệu
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>
+                      <input type="radio" name="price" value="5" <?php if (isset($_GET['price'])) if ($_GET['price'] == 5) echo 'checked' ?>>
+                      <span class="checkmark"></span>
+                      5 triệu - 7 triệu
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>
+                      <input type="radio" name="price" value="7" <?php if (isset($_GET['price'])) if ($_GET['price'] == 7) echo 'checked' ?>>
+                      <span class="checkmark"></span>
+                      7 triệu - 10 triệu
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>
+                    <input type="radio" name="price" value="10" <?php if (isset($_GET['price'])) if ($_GET['price'] == 10) echo 'checked' ?>>
+                      <span class="checkmark"></span>
+                      10 triệu - 15 triệu
+                    </label>
+                  </td>
+                </tr>
+                <tr >
+                  <td >
+                    <label>
+                      <input type="radio" name="price" value="15" <?php if (isset($_GET['price'])) if ($_GET['price'] == 15) echo 'checked' ?>>
+                      <span class="checkmark">Trên 15 triệu</span>
+                    </label>
+                  </td>
+                </tr>
+              </table>
+              </div>
               <div><button type="submit">TÌM KIẾM </button></div>
               
             </form>
