@@ -47,7 +47,6 @@
         <div class="module module-saved">
           <div class="module-header">
             <form id="sidebar" >
-              <div class="the-loai">
               <div class="vi-tri">
                 <table class="location ">
                   <tr>
@@ -69,6 +68,8 @@
                   </tr>
               </table>
               </div>
+                
+              <div class="the-loai">
                 <table class="type ">
                   <tr>
                       <th colspan="2" >TÌM KIẾM THEO LOẠI HÌNH</th>
@@ -108,6 +109,7 @@
                   </tr>
               </table>
               </div>
+              
               <div class="gia-tien">
                 <table class="Price ">
                 <tr>
@@ -180,7 +182,7 @@
                 <tr>
                   <td>
                     <label>
-                    <input type="radio" name="price" value="10" <?php if (isset($_GET['price'])) if ($_GET['price'] == 10) echo 'checked' ?>>
+                      <input type="radio" name="price" value="10" <?php if (isset($_GET['price'])) if ($_GET['price'] == 10) echo 'checked' ?>>
                       <span class="checkmark"></span>
                       10 triệu - 15 triệu
                     </label>
@@ -203,7 +205,6 @@
 
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
           <script src="https://web8802.com/wp-content/themes/hienads/assets/js/quanhuyen.js"></script>
-      
           <script>
             if (address_2 = localStorage.getItem('address_2_saved')) {
 
@@ -348,6 +349,7 @@
                           'Quảng Ninh','Quảng Trị','Sóc Trăng','Sơn La','Tây Ninh','Thái Bình','Thái Nguyên','Thanh Hóa','Thừa Thiên Huế','Tiền Giang',
                           'Trà Vinh','Tuyên Quang','Vĩnh Long','Vĩnh Phúc','Yên Bái'];
             </script>
+
             <script>
               document.getElementById("sidebar").addEventListener("submit", function(event) {
                 event.preventDefault(); // Ngăn chặn hành vi mặc định của form (tải lại trang)
@@ -396,7 +398,18 @@
                 console.log(data);
                 var link = "";
                 for (var i = 0; i < data.length; ++i) {
-                    
+                    if (data[i].length == 2 && data[i][0] != "") {
+                      link += "city=";
+                      var pos = parseInt(data[i][0]) - 1;
+                      //
+                      var city = listcity[pos];
+                      console.log(pos, ' ', city);
+                      link += encodeURIComponent(city);
+                      link += "&district=";
+                      var district = data[i][1];
+                      link += encodeURIComponent(district);
+                    }
+                    if ( i >= 6 && data[i][0] != null ) link += "&price=" + data[i][0];
                     if ( i < 6 && data[i][0] != null && data[i].length != 2) {
                       $type = data[i][0];
                       link += "&type=";
@@ -423,15 +436,78 @@
           <?php 
             $list_id = [];
             $count = 0;
-            $type = "all";       
+            $city = "";
+            $district = "";
+            $type = "all";
+            $price = "all";
+            if ( isset($_GET['city'] )) {$city = $_GET['city'];}
+            if ( isset($_GET['district'] )) {$district = $_GET['district'];}
             if ( isset($_GET['type'] )) {$type = $_GET['type'];}
-            //echo $price.' '.$right1;   
+            if ( isset($_GET['price'] )) {
+              $price = $_GET['price'];
+              if ($price != "all") {
+                if ($price < 3) $right1 = intval($price) + 1;
+                else if ($price < 7) $right1 = intval($price) + 2;
+                else if ($price < 10) $right1 = intval($price) + 3;
+                else if ($price < 15) $right1 = intval($price) + 5;
+                else if ($price == 15) $right1 = intval($price) + 1000;
+              }
+              else { $right1 = 100;}
+            }
+            //echo $price.' '.$right1;
+            
+            
+
             $conn = new mysqli("localhost", "root", "", "room_rent");
             $sql = "SELECT * FROM room_info" ;
             $result = $conn->query($sql);
 
             while ($row = $result->fetch_array()) {
-                if ($type == $row['type']) {$list_id[++$count] = $row['room_id'];}
+              if ( $city != "" && $district != "" && $type == "all" && $price == "all"){
+                if ( $city == $row['city'] && $district == $row['district']) {$list_id[++$count] = $row['room_id'];}}
+              
+              if ( $city != "" && $district == "" && $type == "all" && $price == "all"){
+                if ( $city == $row['city']) {$list_id[++$count] = $row['room_id'];}}
+              
+              if ( $city == "" && $district == "" && $type == "all" && $price == "all"){
+                {$list_id[++$count] = $row['room_id'];}}
+
+              if ( $city != "" && $district != "" && $type != "all" && $price == "all"){ 
+                if ( $city == $row['city'] && $district == $row['district'] && $type == $row['type']) {$list_id[++$count] = $row['room_id'];}}
+              
+              if ( $city != "" && $district == "" && $type != "all" && $price == "all"){ 
+                if ( $city == $row['city'] && $type == $row['type']) {$list_id[++$count] = $row['room_id'];}}
+              
+              if ( $city == "" && $district == "" && $type != "all" && $price == "all"){ 
+                if ($type == $row['type']) {$list_id[++$count] = $row['room_id'];}}
+
+              if ( $city != "" && $district != "" && $type == "all" && $price != "all"){ 
+                if ( $city == $row['city'] && $district == $row['district'] && $price <= $row['price'] && $row['price'] <= $right1) 
+                {$list_id[++$count] = $row['room_id'];}}
+            
+              if ( $city != "" && $district == "" && $type == "all" && $price != "all"){ 
+                if ($city == $row['city'] && $price <= $row['price'] && $row['price'] <= $right1) {$list_id[++$count] = $row['room_id'];}}  
+              
+              if ( $city == "" && $district == "" && $type == "all" && $price != "all"){ 
+                if ($price <= $row['price'] && $row['price'] <= $right1) {$list_id[++$count] = $row['room_id'];}} 
+              
+              if ( $city != "" && $district != "" && $type != "all" && $price != "all"){ 
+                if ($city == $row['city'] && $district == $row['district'] && $type == $row['type'] && $price <= $row['price'] && $row['price'] <= $right1) 
+                {$list_id[++$count] = $row['room_id'];}}
+
+              if ( $city != "" && $district == "" && $type != "all" && $price != "all"){
+                if ($city == $row['city'] && $type == $row['type'] && $price <= $row['price'] && $row['price'] <= $right1) 
+                {$list_id[++$count] = $row['room_id'];}}
+
+              if ( $city != "" && $district == "" && $type != "all" && $price != "all"){ 
+                if ($type == $row['type'] && $price <= $row['price'] && $row['price'] <= $right1) 
+                {$list_id[++$count] = $row['room_id'];}}
+
+              if ( $city != "" && $district != "" && $type == "all" && $price == "all"){
+                if ( $city == $row['city'] && $district == $row['district']) {$list_id[++$count] = $row['room_id'];}}
+
+              if ( $city == "" && $district == "" && $type != "all" && $price != "all"){
+                if ( $type == $row['type'] && $price <= $row['price'] && $row['price'] <= $right1 ) {$list_id[++$count] = $row['room_id'];}}
             }
             
             $list_id = array_unique($list_id);
