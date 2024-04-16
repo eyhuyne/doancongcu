@@ -1,0 +1,460 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+
+.logo i{
+    color:#323232;
+    font-style: normal;
+    font-size: 20px;
+    font-weight: 500;
+}
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: none;
+    position: relative;
+    line-height: 1.4;
+    color: #323232;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    line-height: 20px;
+}
+
+a, a:link , a:visited {
+    text-decoration: none;
+}
+
+/*.box {
+    position: relative;
+}*/
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+    position: relative;
+}
+
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
+
+a:hover, a:active {
+    outline: 0;
+}
+
+.banner {
+	padding: 0px 0px 0px 0px;
+}
+
+.head-box {
+    top: 0;
+    z-index: 1009;
+    background-color: white;
+    width: 100%;
+    height:550px;
+    transition-duration: 0.3s ;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0;
+    transition-property: all;
+}
+.gioithieu{
+    height: 100px;
+}
+.gioithieu h1{
+    margin:35px 150px 0 150px ;
+    text-align: center;
+}
+
+.listarea{
+    display: flex;
+    width: 100%;
+    height: 300px;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: space-around;
+}
+.listarea .list-box img{
+    width: 300px;
+    height: 200px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 45px;
+    
+}
+.listarea .list-box a{
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 300px;
+    text-align: center;
+    height: 220px;
+    font-size: 27px;
+    color:#267be2f3;
+    margin-bottom: 50px;
+}
+.listarea .list-box{
+    
+    position: relative;
+    border: 1px solid rgb(207, 201, 201);
+    height: 246px;
+    border-radius: 25px;
+}
+
+.head-box .box-header {
+    display: flex;
+    justify-content: space-between;     
+    height: 200px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+    position: relative; 
+}
+    .head-box .box-header .gioithieu {
+        padding: 5px ;
+        max-width: 450px;
+        font-size: 20px;
+        /*color: rgb(205, 81, 36);*/
+    }
+        .head-box .box-header .gioithieu h1 {
+            text-align: left;
+        }
+    .head-box .box-header .listarea .menu ul.list-box {
+        flex-direction: row;
+        align-items: center;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        border: 0;
+        outline: 0;
+        vertical-align: baseline;
+    }
+        .menu ul.list-box li {
+            align-items: center;
+            display: flex;
+        }
+            .menu ul.list-box li a {
+                display: block;
+                padding: 3px 25px 3px 25px;
+                color: #323232;
+                font-weight: 600;
+                white-space: nowrap;
+                line-height: 30px;
+                text-transform: uppercase;
+                position: relative;
+                font-size: 20px;
+            }
+
+/*.section {
+    padding: 40px 0;
+}
+
+    .section.box.box-vip {
+        height: 900px;
+    }
+
+    .hostel.hostel-list.vip .modulecontent {
+        margin: 0 -8px;
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+    }
+        .hostel.hostel-list .item {
+            width: calc(100% / 4);
+            margin: 0;
+            padding: 15px 10px;
+            text-align: center;
+            height: 440px;
+        }*/
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.wrapper, .container {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+    position: relative;
+}
+
+.container:before, .container:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.box-header {
+    margin: 0 0 20px;
+    padding: 0;
+    text-align: center;
+}
+    .box-title.text-upper {
+        text-transform: uppercase;
+    }
+
+    .box-title {
+        position: relative;
+        padding: 10px 0;
+        width: fit-content;
+        margin: auto;
+        font-size: 26px;
+        color: #f59222;
+        display: flex;
+        font-weight: 800;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .box-contract .description {
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            height: 22px;
+        }
+    .box-contract .box-body .inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        margin: 0 10px;
+        padding: 10px 0;
+    }
+        .box-contract .box-body .inner .item {
+            width: calc(100% / 3 - 20px );
+            border-radius: 12px;
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px 10px;
+            padding-bottom: 40px;
+            margin: 0 10px auto;
+            height: 280px;
+            align-content: flex-start;
+            transition: all 0.5s ease-in-out;
+            border: 2px solid #efeeee;
+        }
+            .box-contract .box-body .inner .item .image {
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                width: 76px;
+                height: 76px;
+                margin: auto;
+                padding: 0;
+                text-align: center;
+            }
+            .box-contract .box-body .inner .item .content {
+                width: 100%;
+                text-align: center;
+            }
+                .box-contract .box-body .inner .item .content .title {
+                    color: #f54708f3;
+                    font-size: 16px;
+                    font-weight: 600;
+                    padding-bottom: 8px;
+                    margin: 20px 0 0;
+                    text-transform: uppercase;
+                }
+                .box-contract .box-body .inner .item .content .description {
+                    text-align: center;
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+                    .box-contact .highlight {
+                        color: #f54708f3;
+                    }
+                    .highlight {
+                        font-weight: 600;
+                        color: #F30202;
+                    }
+                    .box-contract .box-body .inner .item .content a {
+                        border: 1px solid #f54708f3;
+                        color: #f54708f3;
+                        background-color: rgba(244, 215, 187, 0.916);
+                        font-size: 14px;
+                        font-weight: 600;
+                        align-items: center;
+                        color: #f54708f3;
+                        position: absolute;
+                        bottom: 10px;
+                        left: 15px;
+                        width: calc(100% - 30px);
+                        display: flex;
+                        height: 40px;
+                        border-radius: 8px;
+                        justify-content: center;
+                        margin: 10px auto;
+                        -webkit-transition: all 0.3s ease-in-out;
+                        -moz-transition: all 0.3s ease-in-out;
+                        -o-transition: all 0.3s ease-in-out;
+                        transition: all 0.3s ease-in-out;
+                    }
+
+
+footer .footer-info a, footer .footer-info h2, footer .footer-info li {
+    color: #fff;
+    font-size: 15px;
+}
+footer .footer-info a.social a, footer .footer-info h2.social a, footer .footer-info li.social a {
+    width: 36px;
+    height: 36px;
+    display: block;
+}
+footer .footer-info a.social, footer .footer-info h2.social, footer .footer-info li.social {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+footer.show {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.show {
+    display: block;
+}
+footer {
+    margin: 0 auto;
+    padding: 10px 0 0 0;
+    border-top: 1px solid #dcdcdc;
+    background-color: #cb6b28;
+}
+    footer .footer-info .inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        gap: 5%;
+    }
+        footer .footer-info .inner .footer-logo {
+            display: block;
+            width: 15%;
+            padding: 26px;
+        }
+        footer .footer-info a, footer .footer-info h2, footer .footer-info li {
+            color: #fff;
+            font-size: 15px;
+        }
+        footer .footer-info .inner .content {
+            width: 80%;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+            footer .footer-info .inner .content .block {
+                padding-right: 20px;
+                margin-bottom: 20px;
+            }
+                footer .footer-info .inner .content .block h2 {
+                    font-size: 17px;
+                    margin-bottom: 6px;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                }
+                footer .footer-info .inner .content .block ul {
+                    display: flex;
+                    flex-direction: column;
+                }
+                    footer .footer-info .inner .content .block ul li {
+                        width: 100%;
+                        padding: 2px 0 5px;
+                    }
+                    footer .footer-info li.social a img {
+                        width: 36px;
+                        height: 36px;
+                    }
+
+.banner img {
+    max-width: 100%;
+    width: auto;
+}
+.vi-tri{
+    display: inline-block;
+    width: 60%;
+    border: 1px solid rgb(180, 177, 177);
+    border-radius: 12px;
+}
+.vi-tri th{
+    text-align: center;
+    border-bottom: 1px solid rgb(180, 177, 177) ;
+}
+.vi-tri select{
+    margin-left: 15px;
+    margin-top:7px;
+}
+.the-loai{
+    display: inline-block;
+    width: 60%;
+    border: 1px solid rgb(180, 177, 177);
+    border-radius: 12px;
+}
+.the-loai th{
+    text-align: center;
+    border-bottom: 1px solid rgb(180, 177, 177) ;
+}
+.the-loai label{
+   margin-left: 15px;
+   margin-top:4px;
+   margin-bottom: 4px;
+}
+.gia-tien{
+    display: inline-block;
+    width: 60%;
+    border: 1px solid rgb(180, 177, 177);
+    border-radius: 12px;
+}
+.gia-tien th{
+    text-align: center;
+    border-bottom: 1px solid rgb(180, 177, 177) ;
+}
+.gia-tien label{
+    margin-left: 15px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+button{
+    border-radius: 10px;
+}
+.logo a{
+    height: 50px;
+}
+#sticky{
+    
+    position: sticky;
+    top :0;
+}
+#can-giua a{
+    vertical-align: center;
+}
